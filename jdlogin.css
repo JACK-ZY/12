@@ -1,0 +1,71 @@
+body{padding: 0;margin: 0 ;font-family: "微软雅黑";}
+
+a{text-decoration: none;color: #666}
+a:hover{color: red ;text-decoration: underline}
+.leftfloat{float: left;}
+.rightfloat{float: right;}
+.clear:after{display: block;clear: both;content: ".";visibility: hidden;height: 0;}
+.clear{zoom:1;}
+/*公共class*/
+.top{width: 990px;height: 80px;margin: 0px auto;}
+.top_imglogo{padding-top: 10px;width: 290px;   background: url("jdloginimg/logo-welcome.png") no-repeat right 20px }
+.top_text{
+    padding-top: 57px;padding-bottom: 10px;padding-left: 30px;font-size: 11px;
+    background: url("jdloginimg/redtalk1.png") no-repeat left 5px  top 57px}
+.top_text a{text-decoration: none}
+.top_text a:hover{color: red ;text-decoration: underline}
+.top_text a{color: #999;}
+/*topclass*/
+.login-bg{width: 100%; height: 475px;background-color: #e94641}
+/*.login-bgimg { margin: 0 auto;padding-top: 15px;*/
+    /*background:url("jd登陆页面图片/backgroud.png")no-repeat left; width: 990px;height: 450px}*/
+.login-bgimg { background:url("jdloginimg/bgphoto.png") no-repeat left; margin: 0 auto;padding-top: 15px;
+     width: 990px;height: 450px}
+
+.login-bgdenglu{width: 346px;height: 390px;float: right;margin-top: 24px}
+.login-denglutextkuang{width: 346px;height: 56px;float: right;background-color:white;border-bottom: 1px solid #F7F7F7}
+.login-denglutext1{height: 56px;font-size: 18px;line-height: 56px;background-color:white;
+      padding-left: 49px;padding-right: 49px;}
+.login-denglutext2{height: 56px;font-size: 18px;line-height: 56px;background-color:white;
+    ;padding-right: 49px;}
+
+.login-denglutextkuang:hover{font-weight: bold;color: #f00;cursor:pointer;}
+/*.login-denglutext2:hover{font-weight: bold;color: #f00;cursor:pointer;}*/
+.denglusaomiao{width: 346px;height:296px;background-color:white;border-bottom: 1px solid #ccc;display: none}
+.dengluzhanghao{width: 346px;height:252px;background-color:white;border-bottom: 1px solid #ccc;display: block}
+.login-dibu{width: 346px;height: 50px;background: white;}
+#a1:hover{color: red;}
+#bbbbb{margin-top: 10px;color: #e94641;border: 1px solid yellowgreen;padding-right: 30px}
+#lianghangweizi {width: 346px;height: 60px; background-color: white;}
+
+#shoujidongji{ width:346px;height:14px;
+}
+#shoujidongji ul{
+    list-style-type:none;
+    font-size:8px;
+    width:200px;
+    margin:0 auto;
+}
+#shoujidongji ul li{
+    float:left;
+}
+
+#mianshuru{ width:346px;height:14px;  }
+#mianshuru ul{
+    list-style-type:none;
+    font-size:8px;
+margin-left: 1px}
+#mianshuru ul li{
+    float:left;
+    margin-left: 20px;
+}
+#mianshuru ul li img{
+    margin-bottom: -8px;
+}
+.login-dibu{font-size: 12px;border-top: 1px solid #f4f4f4;padding-bottom: 10px;padding-top: 5px}
+
+.login-dibu img{
+    width: 18px;height: 18px;vertical-align: middle;}
+.lianjie{width: 990px;margin: 10px auto;font-size: 12px;text-align: center;color: #666;}
+.lianjie a{padding: 1px 7px;text-decoration: none;color: #666}
+.lianjie a:hover{color: red ;text-decoration: underline}

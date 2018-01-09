@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" href="jdlogin.css" type="text/css"/>
+
+    <script>
+        //点击扫描登陆后下面的窗口 ，显示扫描框，扫描登陆字体变色，取消账号登陆字体变色
+
+        function diansaomiao() {
+            document.getElementById("login-denglusaomiaokuang").style.display = "block";
+            document.getElementById("login-dengluzhanghaokuang").style.display = "none";
+            document.getElementById("login-denglusaomiaotext").style.fontWeight="bold";
+            document.getElementById("login-denglusaomiaotext").style.color="#E4393C";
+            document.getElementById("login-dengluzhanghaotext").style.fontWeight="normal";
+            document.getElementById("login-dengluzhanghaotext").style.color="black";
+
+
+        }
+        //点击账号登陆后下面的窗口
+        function dianzhanghao(){
+            document.getElementById("login-denglusaomiaokuang").style.display = "none";
+            document.getElementById("login-dengluzhanghaokuang").style.display = "block";
+            document.getElementById("login-dengluzhanghaotext").style.fontWeight="bold";
+            document.getElementById("login-dengluzhanghaotext").style.color="#E4393C";
+            document.getElementById("login-denglusaomiaotext").style.fontWeight="normal";
+            document.getElementById("login-denglusaomiaotext").style.color="black";
+        }
+        //点击自动登陆后
+        function q() {
+            var aa=document.getElementById("gonggongchangsuo");
+            if (aa.innerHTML==""){
+                aa.innerHTML="公共场合不要自动登录";
+                aa.style.border="1px solid blue";
+                aa.style.background="red";
+            }
+            else {document.getElementById("gonggongchangsuo").innerHTML="";
+                aa.style.border="1px solid white";
+                aa.style.background="white";
+            }
+
+        }
+
+        //rate 移动速度，timerate移动时间频率，aa5是扫描图正中间的marginleft，zuobianju是扫描图不动后举例左边框的距离，
+        var aa1=0;var aa2=0;var aa3=0;var aa4;var aa5=83;var aa6=0;var rate=1;var timerate=10; var zuobianju=20;
+        //判断鼠标在里面还是外面，里面是aa1,外面是aa2
+        function pp1(x) {
+            if (x==1) {aa1=1;aa2=0;}
+            else {aa2=-1;aa1=0;}
+            pp(aa1,aa2);
+        }
+
+        //x==1鼠标在里面，else鼠标在外面，aa6=1扫描图向左，aa6=2扫描图向右，aa6=0扫描图不动。
+        function pp(x,y){
+            var qaq3=document.getElementById("saomiaotu");
+            var qaq4=document.getElementById("shoujitu");
+            if (x==1) {
+                aa6=1;aa1=1;aa2=0;
+            }
+            else {
+                aa6=2;aa1=0;aa2=-1;
+            }
+            if (aa6==1){
+                if(aa5>zuobianju){
+                    aa5=aa5-rate;
+                    qaq3.style.marginLeft=aa5+"px";
+                    qaq4.style.display="none";
+                }
+                else {
+                    aa6=0;
+                    qaq4.style.display="block";
+                    qaq3.style.marginLeft=zuobianju+"px";
+                    qaq3.style.marginRight="0px";
+                    clearTimeout(t);
+                }
+            }
+            if (aa6==2){
+                if(aa5<83){
+                    aa5+=rate;
+                    qaq3.style.marginLeft=aa5+"px";
+                    qaq4.style.display="none";
+                }
+                else  {
+                    aa6=0;
+                    clearTimeout(t);
+                }
+            }
+            t=setTimeout('pp(aa1,aa2)',timerate);
+        }
+
+
+    </script>
+
+</head>
+
+<body onload="diansaomiao()">
+<div class="top clear">
+    <div class="top_imglogo leftfloat">  <a href="https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fwww.jd.com%2F" target="_blank">
+        <img src="jdloginimg/logo-201305-b.png"> </a></div>
+    <div class="top_text rightfloat"><a href="#"> 登陆页面，问卷调查</a></div>
+</div>
+
+<div class="login-bg"><!-- 中间所有的-->
+    <div class="login-bgimg"><!-- 中间图片-->
+        <div class="login-bgdenglu clear"><!-- 中间右边的登陆部分-->
+            <div class="login-denglutextkuang"><!-- 中间右边的扫描和账号登陆文字框-->
+                <div class="login-denglutext1 leftfloat" ><!-- 中间右边的扫描登陆-->
+                    <a onclick="diansaomiao()" id="login-denglusaomiaotext"><span style="border-right: 1px solid #F7F7F7;padding-right: 49px">扫描登录</span></a>
+                </div>
+                <div class="login-denglutext2  rightfloat" ><!-- 中间右边的账号登陆-->
+                    <a onclick="dianzhanghao()" id="login-dengluzhanghaotext">账号登录</a>
+                </div>
+            </div>
+
+            <!-- 中间右边的扫描登陆下面的框-->
+            <div class="denglusaomiao" id="login-denglusaomiaokuang" >
+                <!-- 中间右边的扫描登陆下面的2个图-->
+                <div id="liangtukuang" class="twotupian clear" onmouseenter="pp1(1)" onmouseleave="pp1(2)" >
+                    <img src="jdloginimg/erwiema.png" height="146px" width="146px" id="saomiaotu" style="float:left;margin:                         19px 83px 22px 83px;padding: 9px 11px;border: 1px solid #f4f4f4;display: block"  >
+
+                    <!--移动距离margin-left: 20px;-->
+                    <img src="jdloginimg/saoasao.png" height="169px" width="144px" id="shoujitu" style="float:right;margin-top:                     19px;margin-left:11px;margin-right: 1px; display: none">
+                </div>
+
+                <!-- 中间右边的扫描登陆下面的打开 手机京东  扫描二维码+中间右边的扫描登陆下面的免输入 更快 更安全--><div id="lianghangweizi">
+                <div id="shoujidongji">
+                    <ul>
+                        <li>打开<a href="http://app.jd.com/" style="text-decoration: none ;color: red">手机京东 &nbsp; </a></li>
+                        <li>&nbsp;扫描二维码</li>
+                    </ul>
+                </div>
+                <div id="mianshuru">
+                    <ul>
+                        <li><img src="jdloginimg/mianshuru.png">免输入</li>
+                        <li><img src="jdloginimg/gengkuai.png">更快</li>
+                        <li><img src="jdloginimg/genganquan.png">免输入</li>
+
+                    </ul>
+                </div>
+            </div>
+
+                <div class="login-dibu"  >
+                    <div style="height: 30px;width: 360px;margin-top: 20px">
+                        <a style="margin-left: 20px;padding-right: 10px;border-right: 1px solid #f4f4f4" href="#"><img src="jdloginimg/QQ_logo.png" >&nbsp;QQ</a>
+                        <a style="margin-left: 10px;"><img src="jdloginimg/weixin_logo.png" style="width: 18px;height: 18px;vertical-align: middle;">&nbsp;微信</a>
+                        <a style="margin-right: 20px;float: right;color:#FF0000;font-size: 15px "><img src="jdloginimg/zhuce_logo.png" style="width: 18px;height: 18px;vertical-align: middle;">&nbsp;立即注册</a></div>
+
+                </div>
+            </div>
+
+            <div class="dengluzhanghao" id="login-dengluzhanghaokuang" ><!-- 中间右边的账号登陆下面的框-->
+                <div >
+                    <a id="gonggongchangsuo" style="width: 300px;height: 20px;float:left;margin-left: 20px;" ></a>
+                </div>
+                <img src="jdloginimg/userlogo.png" height="37 px" width="37px" id="im1" style="float:left;margin-top: 10px;margin-left: 20px;border-bottom: 1px solid #BDBDBD;border-left: 1px solid #BDBDBD;border-top: 1px solid #BDBDBD;">
+                <input id="i1" type="text" value="" placeholder="请输入账号" style="align-content: center;width: 250px;height: 35px;float: left;margin-top: 10px;padding: 0 0 0 10px;outline: none;"/>
+                <div style="clear: both;width: 340px;height: 10px;"></div>
+                <img src="jdloginimg/passwordlogo.png" height="37px" width="37px" id="im2" style="float:left;margin-top: 10px;margin-left: 20px;border-bottom: 1px solid #BDBDBD;border-left: 1px solid #BDBDBD;border-top: 1px solid #BDBDBD;">
+                <input id="i2" type="password" value="" style="width: 250px;height: 35px;float: left;margin-top: 10px;padding: 0 0 0 10px;outline: none"/>
+                <div class="clear"></div>
+                <input type="radio" name="hhhhhh" id="ii1" value="v1" onclick="q()"
+                       style="font-size: 12px;margin-top: 20px;margin-left:20px;float: left;"/>
+                <div>
+                    <a style="font-size: 12px;height:30px;margin-top: 20px;float: left; " >自动登录</a>
+                    <a id="a1"  style="float: right;height: 30px;font-size: 12px ;margin-top: 20px;
+                margin-right: 20px;">忘记密码</a>
+                <div style="background-color: white">
+                    <input type="button" value="登&nbsp;&nbsp;&nbsp;&nbsp; 录" style="width:304px;
+                height:33px;margin-top:16px;margin-left:20px;font-size:20px;color:white;background-color: #E4393C;border: 1px solid #E85356">
+                </div>
+                </div>
+
+
+                <div class="login-dibu"  >
+                    <div style="height: 30px;width: 360px;margin-top: 20px;">
+                        <a style="margin-left: 20px;padding-right: 10px;border-right: 1px solid #f4f4f4" href="#"><img src="jdloginimg/QQ_logo.png" >&nbsp;QQ</a>
+                        <a style="margin-left: 10px;"><img src="jdloginimg/weixin_logo.png" style="width: 18px;height: 18px;vertical-align: middle;">&nbsp;微信</a>
+                        <a style="margin-right: 20px;float: right;color:#FF0000;font-size: 15px "><img src="jdloginimg/zhuce_logo.png" style="width: 18px;height: 18px;vertical-align: middle;">&nbsp;立即注册</a></div>
+
+                </div>
+            </div>
+            <div style="clear: both  ;"></div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="foot" style="margin-top: 20px">
+
+        <div class="lianjie">
+            <a href="#">关于我们 </a>|
+            <a href="#">联系我们 </a>|
+            <a href="#">人才招聘 </a>|
+            <a href="#">广告服务 </a>|
+            <a href="#">手机京东 </a>|
+            <a href="#">友情链接 </a>|
+            <a href="#">销售联盟 </a>|
+            <a href="#">京东社区 </a>|
+            <a href="#">京东公益 </a>|
+            <a href="#">English Site </a>
+
+
+        </div>
+        <div class="lianjie">Copyright © 2004-2017  京东JD.com 版权所有</div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
